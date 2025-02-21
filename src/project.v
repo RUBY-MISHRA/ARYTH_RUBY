@@ -39,7 +39,7 @@ module ERYTHwrapper (
     assign I3 = 8'b00000011;
     assign I4 = 8'b00000101;
     assign I5 = 8'b00011001;
-   
+    controlgen cg1(.clk(clk),.rst(rst_n),.en(ena),.count(Control));
     gcd2 g1(.a(ui_in), .b(uio_in), .clk(clk), .reset(rst_n), .gcd2(Y1));
     mod3 m1(.a(ui_in), .b(uio_in), .clk(clk), .rst(rst_n), .rem(Y2));
     rightshift l1(.A(ui_in), .S(uio_in[0]), .Y(Y3));
@@ -73,7 +73,21 @@ module ERYTHwrapper (
 
 
 
-
+////////////////////
+module controlgen(clk,rst,en,count);
+   input clk,rst,en;
+   output reg[3:0]count;
+   always @(posedge clk)
+   begin
+   if(rst==0)
+   
+   count<=0;
+   else
+   if(en)
+   count<=count+1;
+   end
+endmodule
+//////////////////////////////////
 module modulo(
     input [7:0] a,     // Dividend (numerator)
     input [7:0] b,     // Divisor (denominator)
