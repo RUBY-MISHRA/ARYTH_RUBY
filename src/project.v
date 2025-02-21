@@ -496,3 +496,30 @@ endmodule
 
 
 
+module mux_16to1(
+    input [7:0]A,B,C,D,E,F,G,H,I,J,K,L,
+    input [3:0]So,
+    output reg [7:0] Y
+    );
+    always @(*) begin
+    case (So)
+        4'b0000: Y<=0;
+        4'b0001: Y<=A;
+        4'b0010: Y<=B;
+        4'b0011: Y<=C;
+        4'b0100: Y<=D;
+        4'b0101: Y<=E;
+        4'b0110: Y<=F;
+        4'b0111: Y<=G;
+        4'b1000: Y<=H;
+        4'b1001: Y<=I;
+        4'b1010: Y<=J;
+        4'b1011: Y<=K;
+//        4'b1100: Y=M;
+//        4'b1101: Y=N;
+//        4'b1110: Y=O;
+//        4'b1111: Y=P;
+//        default: Y = 8'b00000000;
+     endcase
+   end
+endmodule
